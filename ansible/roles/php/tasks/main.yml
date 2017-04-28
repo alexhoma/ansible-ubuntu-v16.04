@@ -1,0 +1,12 @@
+- name: "Install PHP7"
+  apt:
+    name: "{{item}}"
+    state: present
+  update_cache: yes
+  become: yes
+  become_user: root
+  with_items:
+    - php7.0
+    - php7.0-fpm
+    - php7.0-mysql
+    - libapache2-mod-php
