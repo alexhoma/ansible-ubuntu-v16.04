@@ -1,0 +1,12 @@
+---
+- name: "--------------------- Start development playbook ---------------------"
+  hosts: all
+  become: true
+  gather_facts: yes
+  become_user: root
+  user: ubuntu
+  roles:
+    - common
+    - apache
+    - php
+    - mysql

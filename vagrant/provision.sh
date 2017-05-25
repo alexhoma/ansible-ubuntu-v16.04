@@ -21,6 +21,6 @@ sudo apt install -y python-minimal
 
 # Install Ansistrano
 # echo "-> Installing ansistrano"
-# sudo ansible-galaxy install carlosbuenosvinos.ansistrano-deploy carlosbuenosvinos.ansistrano-rollback
+sudo ansible-galaxy install carlosbuenosvinos.ansistrano-deploy carlosbuenosvinos.ansistrano-rollback
 
 iptables --flush
