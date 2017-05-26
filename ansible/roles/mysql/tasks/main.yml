@@ -1,5 +1,5 @@
 ---
-- name: Install the MySQL packages
+- name: "Install the MySQL packages"
   apt: name={{ item }} state=installed update_cache=yes
   with_items:
     - mysql-server
@@ -14,7 +14,7 @@
     state: started
     enabled: true
 
-- name: update mysql root password for all root accounts
+- name: "update mysql root password for all root accounts"
 #  sudo: yes
   mysql_user:
     name: ubuntu
@@ -31,10 +31,10 @@
     - ::1
     - localhost
 
-- name: Copy the root credentials as .my.cnf file
+- name: "Copy the root credentials as .my.cnf file"
   template: src=root.cnf.j2 dest=~/.my.cnf mode=0600
 
-- name: Remove the test database
+- name: "Remove the test database"
   mysql_db: name=test state=absent
   notify:
     - Restart MySQL
