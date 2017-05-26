@@ -1,5 +1,5 @@
 ---
-- name: Install PHP 7.0
+- name: "Install PHP 7.0"
   apt:
     name: "{{item}}"
     state: present
@@ -10,7 +10,14 @@
     - php7.0
     - php7.0-fpm
     - php7.0-mysql
-    - libapache2-mod-php
     - php7.0-curl
     - php7.0-json
     - php7.0-cgi
+    - libapache2-mod-php7.0
+
+- name: "Install composer"
+  become: yes
+  become_user: root
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
