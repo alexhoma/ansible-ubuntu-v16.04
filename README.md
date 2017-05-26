@@ -1,4 +1,7 @@
 # Ansible - Ubuntu 16.04
+![Stable Version](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+
 Ubuntu 16.04 virtualmachine provisioned by Ansible.
 * Apache
 * PHP 7.0 + Composer
