@@ -7,7 +7,7 @@
     - python-mysqldb
     - libmysqlclient-dev
 
-- name: Start the MySQL service
+- name: "Start the MySQL service"
   sudo: yes
   service:
     name: mysql
@@ -15,14 +15,10 @@
     enabled: true
 
 - name: "update mysql root password for all root accounts"
-#  sudo: yes
   mysql_user:
     name: ubuntu
     host: "{{ item }}"
     password: "{{ mysql_root_pass }}"
-#    login_user: root
-#    login_password: "{{ mysql_root_pass }}"
-#    check_implicit_admin: yes
     priv: "*.*:ALL,GRANT"
     state: present
   with_items:
@@ -33,6 +29,17 @@
 
 - name: "Copy the root credentials as .my.cnf file"
   template: src=root.cnf.j2 dest=~/.my.cnf mode=0600
+
+- name: "Copy demo SQL file"
+  copy: src=files/db.sql dest=/tmp/db.sql
+
+- name: "Create demo database"
+  mysql_db:
+    name: mpwar_performance_blog
+    state: import
+    target: /tmp/db.sql
+  notify:
+    - Restart MySQL
 
 - name: "Remove the test database"
   mysql_db: name=test state=absent

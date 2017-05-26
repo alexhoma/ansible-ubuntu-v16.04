@@ -29,6 +29,10 @@ or add as many as you like.
 </VirtualHost>
 ```
 
+Default credentials for MySQL, but you can change it anytime.
+* User: ubuntu
+* Password: root
+
 ## Add your project
 ```shell
 # Remove this .git repository files
@@ -39,3 +43,6 @@ rm -rf .git*
 git clone {YOUR_PROJECT_REPOSITORY}
 cp -R {YOUR_PROJECT_REPOSITORY}/* www/
 ```
+
+## Todo:
+ - Create database doesn't work. Fix that.
