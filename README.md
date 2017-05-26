@@ -7,13 +7,13 @@ Ubuntu 16.04 virtualmachine provisioned by Ansible.
 
 ## Initialize
 Clone this repo and start up Vagrant!
-```php
+```shell
 git clone https://github.com/alexhoma/ansible-ubuntu-v16.04.git
 cd ansible-centos-v6.7/vagrant
 vagrant up --provision
 ```
 If the command `--provision` doesn't work for you, try with:
-```php
+```shell
 vagrant up; vagrant provision;
 ```
 
@@ -27,7 +27,7 @@ or add as many as you like.
 ```
 
 ## Add your project
-```php
+```shell
 # Remove this .git repository files
 cd ansible-centos-v6.7/vagrant
 rm -rf .git*
