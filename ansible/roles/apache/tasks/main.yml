@@ -1,0 +1,20 @@
+---
+- name: "Install Apache2"
+  apt: name=apache2 state=present
+
+- name: "Add Virtualhost config file"
+  copy: src=files/vhost.conf dest=/etc/apache2/sites-enabled/vhost.conf
+
+- name: "Add Ubuntu as a owner of /var/www/html"
+  file:
+    path: /var/www/html
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+  become: yes
+  become_user: root
+
+- name: "Restart Apache2"
+  become: yes
+  become_user: root
+  service: name=apache2 state=reloaded
