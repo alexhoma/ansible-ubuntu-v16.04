@@ -33,6 +33,20 @@ Default credentials for MySQL, but you can change it anytime.
 * User: ubuntu
 * Password: root
 
+## Production server provision
+Create an instance wherever you want. Let's say Amazon EC2.
+* The first thing you do is add these lines into `ansible/inventories/hosts`
+```shell
+[production]
+{PUT_HERE_YOUR_REMOTE_MACHINE_IP} ansible_ssh_private_key_file=~/.ssh/{PUT_HERE_YOUR_REMOTE_MACHINE_PUBLIC_KEY}.pem ansible_user=ubuntu
+```
+* To provision just paste this line in your terminal and magic will happen!
+```shell
+cd ansible-centos-v6.7
+ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+```
+* I'll recommend you to access to your remote machine and check if the provision was made as expected.
+
 ## Add your project
 ```shell
 # Remove this .git repository files

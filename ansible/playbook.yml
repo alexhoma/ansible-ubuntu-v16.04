@@ -1,8 +1,11 @@
 ---
-- name: "--------------------- Start development playbook ---------------------"
+- name: "----------------------- Start Ansible playbook ------------------------"
   hosts: all
   become: true
-  gather_facts: yes
+  gather_facts: no
+  pre_tasks:
+      - name: 'Install python2'
+        raw: sudo apt-get -y install python python-simplejson
   become_user: root
   user: ubuntu
   roles:
