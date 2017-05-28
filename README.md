@@ -21,11 +21,15 @@ vagrant up; vagrant provision;
 ```
 
 The default VirtualHost maps to /var/www/ in port 80. But you can change it 
-or add as many as you like.
+or add as many as you like. I also added a Fallback to `index.php so you don't need to add manually to your url.
 ```apacheconfig
 <VirtualHost *:80>
     DocumentRoot /var/www/html/
     ServerName ubuntu.performance.dev
+    
+    <Directory /var/www/html/mpwar_performance_exercise/web>
+       FallbackResource /index.php
+    </Directory>
 </VirtualHost>
 ```
 
