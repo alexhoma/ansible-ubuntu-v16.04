@@ -8,8 +8,8 @@
 - name: "Add Ubuntu as a owner of /var/www/html"
   file:
     path: /var/www/html
-    owner: ubuntu
-    group: ubuntu
+    owner: www-data
+    group: www-data
     mode: 0755
   become: yes
   become_user: root
