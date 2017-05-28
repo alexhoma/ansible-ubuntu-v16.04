@@ -4,7 +4,7 @@
 sudo apt-get update
 
 # Install ansible dependencies
-sudo ansible-playbook /ansible/playbook.yml -i /ansible/inventory/hosts --connection=local
+sudo ansible-playbook /ansible/development_playbook.yml -i /ansible/inventory/hosts --connection=local
 
 # Install Ansible
 if ! ansible --version | grep ansible;
