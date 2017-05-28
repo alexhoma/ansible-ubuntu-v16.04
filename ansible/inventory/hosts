@@ -1,8 +1,8 @@
 [webservers]
-192.168.22.22
+192.168.22.25
 
 [databases]
-192.168.22.22
+192.168.22.25
 
 [infraestructure:children]
 webservers

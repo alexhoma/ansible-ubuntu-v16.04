@@ -1,6 +1,6 @@
 ---
 - name: "----------------------- Start Ansible playbook ------------------------"
-  hosts: all
+  hosts: webservers
   become: true
   gather_facts: no
   pre_tasks:

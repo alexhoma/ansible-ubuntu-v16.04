@@ -13,6 +13,8 @@
     - php7.0-curl
     - php7.0-json
     - php7.0-cgi
+    - php7.0-xml
+    - php-redis
     - libapache2-mod-php7.0
 
 - name: "Install composer"
