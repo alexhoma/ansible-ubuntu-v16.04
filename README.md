@@ -48,7 +48,7 @@ Create an instance wherever you want. Let's say Amazon EC2.
 ```
 * For provision just paste this line in your terminal:
 ```shell
-ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+ansible-playbook ansible/web_playbook.yml -i ansible/inventory/hosts
 ```
 
 ### MySQL server provision
@@ -60,7 +60,7 @@ If you want to use MySQL in a distributed way:
 ```
 * Then execute this line in your terminal for provision:
 ```shell
-ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+ansible-playbook ansible/mysql_playbook.yml -i ansible/inventory/hosts
 ```
 
 ### Redis server provision
@@ -72,7 +72,7 @@ If you want to use Redis in a distributed way:
 ```
 * Then execute this line in your terminal for provision:
 ```shell
-ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+ansible-playbook ansible/redis_playbook.yml -i ansible/inventory/hosts
 ```
 * If you want to store the PHP sessions, you should add these lines manually in `/etc/php/7.0/apache2/php.ini   `
 ```yaml
