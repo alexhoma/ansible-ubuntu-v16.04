@@ -1,18 +1,14 @@
-[webservers]
+[web_server]
 192.168.22.25
 
-[databases]
+[mysql_server]
 192.168.22.25
 
-[infraestructure:children]
-webservers
-databases
+[redis_server]
+192.168.22.25
 
-[webservers:vars]
-host_name=frontend
-
-[databases:vars]
+[mysql_server:vars]
 mysql_innodb_buffer_pool_size="256M"
 
-[infraestructure:vars]
+[web_server:vars]
 time_zone=Europe/Madrid

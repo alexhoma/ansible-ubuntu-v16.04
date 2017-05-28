@@ -1,6 +1,11 @@
 ---
+#
+# Development playbook to group development config
+# For Vagrant environment, for example.
+#
+
 - name: "-------------------- Start Development playbook -----------------------"
-  hosts: webservers
+  hosts: web_server
   become: true
   gather_facts: no
   pre_tasks:

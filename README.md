@@ -6,6 +6,7 @@ Ubuntu 16.04 virtualmachine provisioned by Ansible.
 * Apache
 * PHP 7.0 + Composer
 * MySQL 5.7
+* Redis
 * Git, htop, wget, vim and tree
 
 ## Initialize
@@ -37,21 +38,53 @@ Default credentials for MySQL, but you can change it anytime.
 * User: ubuntu
 * Password: root
 
-## Production server provision
+## Server provisioning
+### Web/Front server provision
 Create an instance wherever you want. Let's say Amazon EC2.
-* The first thing you do is add these lines into `ansible/inventories/hosts`
+* The first thing you have to do is add these lines into `ansible/inventories/hosts`
 ```shell
-[production]
+[web_server]
 {PUT_HERE_YOUR_REMOTE_MACHINE_IP} ansible_ssh_private_key_file=~/.ssh/{PUT_HERE_YOUR_REMOTE_MACHINE_PUBLIC_KEY}.pem ansible_user=ubuntu
 ```
-* To provision just paste this line in your terminal and magic will happen!
+* For provision just paste this line in your terminal:
 ```shell
-cd ansible-centos-v6.7
 ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
 ```
-* I'll recommend you to access to your remote machine and check if the provision was made as expected.
 
-## Add your project
+### MySQL server provision
+If you want to use MySQL in a distributed way:
+* Add these lines into `ansible/inventories/hosts`
+```shell
+[mysql_server]
+{PUT_HERE_YOUR_MYSQL_MACHINE_IP} ansible_ssh_private_key_file=~/.ssh/{PUT_HERE_YOUR_MYSQL_MACHINE_PUBLIC_KEY}.pem ansible_user=ubuntu
+```
+* Then execute this line in your terminal for provision:
+```shell
+ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+```
+
+### Redis server provision
+If you want to use Redis in a distributed way:
+* Add these lines into `ansible/inventories/hosts`
+```shell
+[redis_server]
+{PUT_HERE_YOUR_REDIS_MACHINE_IP} ansible_ssh_private_key_file=~/.ssh/{PUT_HERE_YOUR_REDIS_MACHINE_PUBLIC_KEY}.pem ansible_user=ubuntu
+```
+* Then execute this line in your terminal for provision:
+```shell
+ansible-playbook ansible/playbook.yml -i ansible/inventory/hosts
+```
+* If you want to store the PHP sessions, you should add these lines manually in `/etc/php/7.0/apache2/php.ini   `
+```yaml
+[Session]
+; Handler used to store/retrieve data.
+; http://php.net/session.save-handler
+session.save_handler = redis
+session.save_path = "tcp://127.0.0.1:6379"
+```
+
+## Add your Application
+The shared folder `shared/www`  maps to `/var/www/html` so if you want to add your PHP project just follow the next snippet: 
 ```shell
 # Remove this .git repository files
 cd ansible-centos-v6.7/vagrant
@@ -62,5 +95,3 @@ git clone {YOUR_PROJECT_REPOSITORY}
 cp -R {YOUR_PROJECT_REPOSITORY}/* www/
 ```
 
-## Todo:
- - Create database doesn't work. Fix that.
