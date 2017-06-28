@@ -1,5 +1,14 @@
 ---
-- name: "Install PHP 7.0"
+- name: "Add PHP7.1 repository"
+  apt_repository:
+    repo: "ppa:ondrej/php"
+
+- name: "Update and upgrade apt packages"
+  become: true
+  apt:
+    update_cache: yes
+
+- name: "Install PHP 7.1"
   apt:
     name: "{{item}}"
     state: present
@@ -7,15 +16,15 @@
   become: yes
   become_user: root
   with_items:
-    - php7.0
-    - php7.0-fpm
-    - php7.0-mysql
-    - php7.0-curl
-    - php7.0-json
-    - php7.0-cgi
-    - php7.0-xml
+    - php7.1
+    - php7.1-fpm
+    - php7.1-mysql
+    - php7.1-curl
+    - php7.1-json
+    - php7.1-cgi
+    - php7.1-xml
     - php-redis
-    - libapache2-mod-php7.0
+    - libapache2-mod-php7.1
 
 - name: "Install composer"
   become: yes
