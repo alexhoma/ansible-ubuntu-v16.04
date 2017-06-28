@@ -1,5 +1,5 @@
 # Ansible - Ubuntu 16.04
-![Stable Version](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg)
+![Stable Version](https://img.shields.io/badge/release-v1.0.2-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
 Ubuntu 16.04 virtualmachine provisioned by Ansible.
