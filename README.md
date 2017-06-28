@@ -4,7 +4,7 @@
 
 Ubuntu 16.04 virtualmachine provisioned by Ansible.
 * Apache
-* PHP 7.0 + Composer
+* PHP 7.1 + Composer
 * MySQL 5.7
 * Redis
 * Git, htop, wget, vim and tree
