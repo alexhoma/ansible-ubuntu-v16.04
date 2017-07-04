@@ -74,7 +74,7 @@ If you want to use Redis in a distributed way:
 ```shell
 ansible-playbook ansible/redis_playbook.yml -i ansible/inventory/hosts
 ```
-* If you want to store the PHP sessions, you should add these lines manually in `/etc/php/7.0/apache2/php.ini   `
+* If you want to store the PHP sessions, you should add these lines manually in `/etc/php/7.1/apache2/php.ini   `
 ```yaml
 [Session]
 ; Handler used to store/retrieve data.

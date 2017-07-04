@@ -7,11 +7,11 @@
 - name: "-------------------- Start Development playbook -----------------------"
   hosts: web_server
   become: true
+  become_user: root
   gather_facts: no
   pre_tasks:
     - name: "Install python2"
       raw: sudo apt-get -y install python python-simplejson
-  become_user: root
   user: ubuntu
   roles:
     - common

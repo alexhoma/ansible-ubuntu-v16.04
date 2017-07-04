@@ -3,12 +3,14 @@
   apt: name=apache2 state=present
 
 - name: "Add Virtualhost config file"
+  become: yes
+  become_user: root
   copy: src=files/vhost.conf dest=/etc/apache2/sites-enabled/000-default.conf
 
 - name: "Add Ubuntu as a owner of /var/www/html"
   file:
     path: /var/www/html
-    owner: www-data
+    owner: ubuntu
     group: www-data
     mode: 0755
   become: yes
